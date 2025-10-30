@@ -52,3 +52,7 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+src/yahboomcar_slam/params/ORBvoc.txt 
+src/yahboomcar_mediapipe/
+src/yahboomcar_visual/

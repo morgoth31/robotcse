@@ -1,5 +1,5 @@
 # Utiliser l'image ROS 2 'desktop' comme base
-FROM ros:jazzy-ros-base
+FROM osrf/ros:humble-desktop-full
 
 # Définir le répertoire de travail à l'intérieur du conteneur
 WORKDIR /root/ros2_ws
@@ -10,9 +10,9 @@ COPY . ./src
 
 # Sourcer ROS 2, installer les dépendances et compiler le code
 # Note : 'RUN' exécute les commandes lors du 'docker build'
-RUN apt-get update
-RUN rosdep install -i --from-path src --rosdistro jazzy -y
-RUN colcon build
+RUN apt-get update && \
+    rosdep install -i --from-path src --rosdistro humble -y && \
+    rm -rf /var/lib/apt/lists/*
 #RUN    rm -rf /var/lib/apt/lists/*
 
 # (Optionnel) Définir la commande par défaut qui sera lancée
